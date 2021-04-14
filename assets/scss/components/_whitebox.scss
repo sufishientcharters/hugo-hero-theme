@@ -6,5 +6,5 @@
   padding: $padding;
 }
 .whitebox {
-  @include whitebox();
+  @include whitebox(1rem);
 }

@@ -1,16 +1,16 @@
 // Font
-@import url('https://fonts.googleapis.com/css?family=Lato:400|Open+Sans:400,700');
+@import url("https://fonts.googleapis.com/css?family=Lato:400|Open+Sans:400,700");
 
 // Bootstrap
-@import 'bootstrap/functions';
-@import 'bootstrap-variables';
-@import 'bootstrap/variables';
-@import 'bootstrap/mixins';
-@import 'bootstrap/root';
-@import 'bootstrap/reboot';
-@import 'bootstrap/grid';
-@import 'bootstrap/type';
-@import 'bootstrap/tables';
+@import "bootstrap/functions";
+@import "bootstrap-variables";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/root";
+@import "bootstrap/reboot";
+@import "bootstrap/grid";
+@import "bootstrap/type";
+@import "bootstrap/tables";
 // @import "bootstrap/images";
 // @import "bootstrap/code";
 // @import "bootstrap/forms";
@@ -37,38 +37,39 @@
 // @import "bootstrap/popover";
 // @import "bootstrap/carousel";
 // @import "bootstrap/print";
-@import 'bootstrap/utilities';
+@import "bootstrap/utilities";
 
 // Libraries
-@import 'libraries/hamburgers/hamburgers';
+@import "libraries/hamburgers/hamburgers";
 
 // Components
-@import 'components/reset';
-@import 'components/page';
-@import 'components/header';
-@import 'components/footer';
-@import 'components/sub-footer';
-@import 'components/logo';
-@import 'components/main-menu';
-@import 'components/main-menu-mobile';
-@import 'components/social';
-@import 'components/hamburger';
-@import 'components/buttons';
-@import 'components/title';
-@import 'components/content';
-@import 'components/intro';
-@import 'components/strip';
-@import 'components/whitebox';
-@import 'components/feature';
-@import 'components/hero-image';
-@import 'components/bg';
+@import "components/reset";
+@import "components/page";
+@import "components/header";
+@import "components/footer";
+@import "components/sub-footer";
+@import "components/logo";
+@import "components/main-menu";
+@import "components/main-menu-mobile";
+@import "components/social";
+@import "components/hamburger";
+@import "components/buttons";
+@import "components/title";
+@import "components/content";
+@import "components/intro";
+@import "components/strip";
+@import "components/whitebox";
+@import "components/feature";
+@import "components/hero-image";
+@import "components/bg";
 
 // Pages
-@import 'pages/services/page-services-list';
-@import 'pages/services/page-services-single';
-@import 'pages/services/service-summary';
-@import 'pages/work/work-summary';
-@import 'pages/work/page-work-single';
+@import "pages/charters/page-charters-list";
+@import "pages/charters/page-charters-single";
+@import "pages/charters/charter-summary";
+@import "pages/reviews/review-summary";
+@import "pages/work/work-summary";
+@import "pages/work/page-work-single";
 
 // Display breakpoints for DEV
 // body:after {

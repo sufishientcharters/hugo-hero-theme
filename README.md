@@ -3,7 +3,7 @@
 Hero is a multi-page business theme with fullscreen hero images and fullwidth sections.
 
 [Live Demo](https://hugo-hero.netlify.com/) |
-[Installation](#installation) | 
+[Installation](#installation) |
 [Zerostatic Themes](https://www.zerostatic.io/theme/hugo-hero/)
 
 ![Hugo Hero Theme screenshot](https://github.com/JugglerX/hugo-hero-theme/blob/master/images/screenshot-full.jpg)
@@ -12,7 +12,7 @@ Hero is a multi-page business theme with fullscreen hero images and fullwidth se
 
 ### Content Types
 
-- Services (Markdown)
+- Charters (Markdown)
 - Work/Portfolio (Markdown)
 - Features (Data)
 - About (Markdown, Single Page, Shortcodes)
@@ -24,7 +24,7 @@ Hero is a multi-page business theme with fullscreen hero images and fullwidth se
 - Includes examples where multiple .md files are sourced in a single layout to create fullwidth sections that have different locations in the HTML.
 - The "Home" page uses multiple markdown files for the different homepage sections. It uses **headless bundles**.
 - The "About Us" page uses multiple markdown files for its different sections. It uses **leaf bundles** and **shortcodes**.
-- "Services" & "Work" use markdown files with layouts for list, single and summary views.
+- "Charters" & "Work" use markdown files with layouts for list, single and summary views.
 
 ### Features
 
@@ -55,6 +55,7 @@ Hero is a multi-page business theme with fullscreen hero images and fullwidth se
 - Royalty free images included
 
 # Installation
+
 ### Install Hugo
 
 To use this theme you will need to have Hugo installed. If you don't already have Hugo installed please follow the official [installation guide](https://gohugo.io/getting-started/installing/)
@@ -82,6 +83,7 @@ This will create a fresh Hugo site in the folder `mynewsite`.
 ### Install theme with Git
 
 Clone this repo into the themes folder
+
 ```
 cd mynewsite
 git clone https://github.com/jugglerx/hugo-hero-theme.git themes/hugo-hero-theme
@@ -156,14 +158,14 @@ Often a homepage requires special meta tags such as a meta description or og met
 
 ### Set meta tags on a per layout basis
 
-You can set meta tags on a per template basis using a block. For example, you might want to write a custom meta description for the `/services` page. You can insert any valid HTML meta data inside the `{{ define "meta_tags }}` block at the top of a template.
+You can set meta tags on a per template basis using a block. For example, you might want to write a custom meta description for the `/charters` page. You can insert any valid HTML meta data inside the `{{ define "meta_tags }}` block at the top of a template.
 
 ```
-// layouts/services/list.html
+// layouts/charters/list.html
 ...
 
 {{ define "meta_tags" }}
-    <meta name="description" content="We offer a variety of services in the finance industry" />
+    <meta name="description" content="We offer a variety of charters" />
 {{ end }}
 
 {{ define main }}

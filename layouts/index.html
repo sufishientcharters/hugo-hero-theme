@@ -26,7 +26,7 @@
 <div id="home" class="strip bg-cover bg-position-top bg-overlay" style="background-image: url('{{ .Params.background | relURL }}');">
   <div class="container pt-17 pb-17">
     <div class="row">
-      <div class="col-12 col-md-6 offset-md-6">
+      <div class="col-12 col-md-6 offset-md-6 whitebox">
         <h2 class="text-primary text-capitalize">{{ .Title }}</h2>
         <p>{{ .Content }}</p>
         <a class="button" href="{{ .Params.buttonLink | relURL }}">{{ .Params.button }}</a>
@@ -36,24 +36,26 @@
 </div>
 {{ end }}
 
-{{ $services := where (where .Site.RegularPages "Type" "services") ".Params.featured" true }}
-{{if gt (len $services) 0}}
+{{ $charters := where (where .Site.RegularPages "Type" "charters") ".Params.featured" true }}
+{{ if gt (len $charters) 0 }}
 <div class="container pt-8 pb-8 pb-md-14 pt-md-14">
   <div class="row justify-content-start">
     <div class="col-12">
-      <h2 class="text-center mb-3">Our Services</h2>
+      <h2 class="text-center mb-3">Our Charters</h2>
     </div>
-    {{ range first 6 (sort $services ".Params.weight") }}
+    {{ range first 3 (sort $charters ".Params.weight") }}
     <div class="col-12 col-md-4 mb-1">
       {{ .Render "summary" }}
     </div>
     {{ end }}
+    {{ if gt (len $charters) 3 }}
     <div class="col-12 text-center">
-      <a class="button button-primary" href="{{ .Site.BaseURL }}services">View All Services</a>
+      <a class="button button-primary" href="{{ .Site.BaseURL }}charters">View All Charters</a>
     </div>
+    {{ end }}
   </div>
 </div>
-{{end}}
+{{ end }}
 
 {{ range first 1 (after 1 $reusablePages) }}
 <div id="home" class="strip bg-primary bg-cover bg-position-top bg-overlay" style='background-image: url("{{ .Params.background | relURL }}");'>
@@ -65,6 +67,22 @@
         <a class="button button-white" href="{{ .Params.buttonLink | relURL }}">{{ .Params.button }}</a>
       </div>
     </div>
+  </div>
+</div>
+{{ end }}
+
+{{ $reviews := where (where .Site.RegularPages "Type" "reviews") ".Params.featured" true }}
+{{ if gt (len $reviews) 0 }}
+<div class="container pt-8 pb-8 pb-md-14 pt-md-14">
+  <div class="row g-2 justify-content-start">
+    <div class="col-12">
+      <h2 class="text-center mb-3">Our Customers</h2>
+    </div>
+    {{ range first 6 (sort $reviews ".Params.weight") }}
+    <div class="col-12 col-md-4 mb-1 whitebox">
+      {{ .Render "summary" }}
+    </div>
+    {{ end }}
   </div>
 </div>
 {{ end }}

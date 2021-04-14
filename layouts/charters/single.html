@@ -1,5 +1,5 @@
 {{ define "header_css" }}{{ end }}
-{{ define "body_classes" }}page-services-single{{ end }}
+{{ define "body_classes" }}page-charters-single{{ end }}
 {{ define "header_classes" }}{{ end }}
 
 {{ define "main" }}
@@ -17,11 +17,11 @@
 
 {{ define "footer_js" }}
 {{ $library := resources.Get "js/libs/library.js" }}
-{{ $services := resources.Get "js/pages/services.js" }}
-{{ $servicesJS := slice $library $services |resources.Concat "js/services.js" }}
+{{ $charters := resources.Get "js/pages/charters.js" }}
+{{ $chartersJS := slice $library $charters |resources.Concat "js/charters.js" }}
 {{ if .Site.IsServer }}
-  <script type="text/javascript" src="{{ $servicesJS.RelPermalink }}"></script>
+  <script type="text/javascript" src="{{ $chartersJS.RelPermalink }}"></script>
   {{ else }}
-  <script type="text/javascript" src="{{ ($servicesJS | minify | fingerprint).RelPermalink }}"></script>
+  <script type="text/javascript" src="{{ ($chartersJS | minify | fingerprint).RelPermalink }}"></script>
   {{ end }}
 {{ end }}
