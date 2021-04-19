@@ -73,17 +73,19 @@
 
 {{ $reviews := where (where .Site.RegularPages "Type" "reviews") ".Params.featured" true }}
 {{ if gt (len $reviews) 0 }}
+<div class="strip bg-primary bg-cover bg-position-bottom bg-overlay" style='background-image: url("/images/customers_bw.jpg");'>
 <div class="container pt-8 pb-8 pb-md-14 pt-md-14">
-  <div class="row g-2 justify-content-start">
+  <div class="row justify-content-start">
     <div class="col-12">
-      <h2 class="text-center mb-3">Our Customers</h2>
+      <h2 class="text-center text-white mb-3">Our Customers</h2>
     </div>
-    {{ range first 6 (sort $reviews ".Params.weight") }}
-    <div class="col-12 col-md-4 mb-1 whitebox">
+    {{ range first 3 (sort $reviews ".Params.weight") }}
+    <div class="col-12 mb-3 whitebox">
       {{ .Render "summary" }}
     </div>
     {{ end }}
   </div>
+</div>
 </div>
 {{ end }}
 
