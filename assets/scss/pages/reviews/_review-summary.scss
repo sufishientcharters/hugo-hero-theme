@@ -1,5 +1,24 @@
 .review-summary {
+  .review-content::before {
+    content: "❝";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-1px, -50%);
+    background-color: $white;
+    border-radius: 999px;
+    display: grid;
+    place-content: center;
+    z-index: 1;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 2rem;
+    color: lighten($secondary, 20%);
+  }
   .review-author {
     text-align: right;
+  }
+  .review-author::before {
+    content: "— ";
   }
 }
