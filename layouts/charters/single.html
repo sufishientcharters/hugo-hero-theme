@@ -3,12 +3,16 @@
 {{ define "header_classes" }}{{ end }}
 
 {{ define "main" }}
-{{ partial "hero-image-setheight.html" (dict "background" .Params.heroBackground "heading" .Params.heroHeading "subheading" .Params.heroSubHeading "section" .Section "content" .)}}
+{{ $button := (dict "text" .Params.Button "link" .Params.ButtonLink)}}
+{{ partial "hero-image-setheight.html" (dict "background" .Params.heroBackground "backgroundPosition" .Params.heroBackgroundPosition "heading" .Params.heroHeading "subheading" .Params.heroSubHeading "section" .Section "parent" .Parent "button" $button "content" .)}}
 <div class="container pt-4 pt-md-10 pb-4 pb-md-10">
   <div class="row justify-content-start">
     <div class="col-12 col-md-8">
       <div class="service service-single">
         <div class="content">{{.Content}}</div>
+        <div class="calltoaction">
+          <a class="button button-cta" href="{{ .Params.buttonLink | relURL }}">{{ .Params.button }}</a>
+        </div>
       </div>
     </div>
   </div>

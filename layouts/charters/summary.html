@@ -1,13 +1,20 @@
 <div class="service service-summary">
   {{ if .Params.icon }}
   <div class="service-image">
-    <img src="{{ .Site.BaseURL }}{{ .Params.icon }}"/>
+    <a href="{{ .Permalink }}" title="{{ .Title }}">
+      <img src="{{ .Site.BaseURL }}{{ .Params.icon }}" alt="{{ .Title }} Icon"/>
+    </a>
   </div>
   {{ end }}
   <div class="service-content">
     <h2 class="service-title">
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <a href="{{ .Permalink }}" title={{ .Title }}>{{ .Title }}</a>
     </h2>
-    {{ .Content | truncate 120 "..." }}
+    <div class="service-body mb-2">
+      {{ .Summary }}
+    </div>
+    <div class="service-calltoaction mb-2">
+      <a class="button button-cta" href="{{ .Params.buttonLink | relURL }}">{{ .Params.button }}</a>
+    </div>
   </div>
 </div>

@@ -22,3 +22,9 @@
   color: #fff;
   border: 2px solid #fff;
 }
+.button-cta {
+  background: $cta;
+  &:hover {
+    background-color: lighten($cta, 10%);
+  }
+}
