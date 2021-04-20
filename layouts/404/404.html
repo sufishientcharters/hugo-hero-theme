@@ -3,13 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Page Not Found - SuFISHient Charters</title>
+    <title>
+      {{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="SuFISHient Charters: See photos, check our rates, and book a fishing trip. Sailing out of Holland, Grand Haven, or Saugatuck on beautiful Lake Michigan."
-    />
-    <link rel="stylesheet" href="/css/style.css" />
+    {{ block "meta_tags" . }}{{end}}
     <style type="text/css">
       *,
       *::before,
@@ -195,6 +193,11 @@
       .footer ul li a:hover {
         text-decoration: underline;
       }
+      .footer ul li .copyright {
+        font-weight: bold;
+        color: rgb(196, 197, 203);
+        display: none;
+      }
       @media (min-width: 576px) {
         .footer ul {
           height: inherit;
@@ -210,9 +213,14 @@
         }
         .footer ul li a {
           display: inline-block;
-          height: 40px;
           padding: 10px 8px 10px 8px;
           font-weight: 300;
+        }
+      }
+      @media (min-width: 768px) {
+        .footer ul li .copyright {
+          display: inline-block;
+          padding: 10px 8px 10px 8px;
         }
       }
       .sub-footer {
@@ -335,7 +343,7 @@
       <div class="header header-absolute">
         <div class="container">
           <div class="logo">
-            <a href="/">SuFISHient Charters</a>
+            <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
           </div>
         </div>
       </div>
@@ -347,35 +355,14 @@
       >
         <div class="container">
           <div class="hero-text">
-            <h1>The One That Got Away</h1>
-            <p>
-              Nuts. It seems like this fis… er… document has thrown the hook.
-            </p>
+            <h1>{{ .Params.HeroHeading }}</h1>
+            <p>{{ .Params.HeroSubHeading }}</p>
           </div>
         </div>
       </div>
       <div class="container pt-17 pb-17">
         <div class="row">
-          <div class="col-12">
-            <h2 class="text-primary text-capitalize">What next?</h2>
-            <p>
-              Head back to our <a href="/">Home</a> page and try again. Or
-              contact us and let us know just how big that fish was… or how you
-              ended up here:
-            </p>
-            <ul>
-              <li>
-                <strong>Phone: </strong
-                ><a href="tel:+16168869143">1-616-886-9143</a>
-              </li>
-              <li>
-                <strong>Email: </strong
-                ><a href="mailto:info@sufishientcharters.com"
-                  >info@sufishientcharters.com</a
-                >
-              </li>
-            </ul>
-          </div>
+          <div class="col-12">{{ .Content }}</div>
         </div>
       </div>
       <div class="footer">
@@ -384,30 +371,10 @@
             <div class="col-12">
               <div class="footer-inner">
                 <ul class="footer-menu">
-                  <li><a href="/">Home</a></li>
+                  <li><a href="{{ .Site.BaseURL }}">Home</a></li>
                   <li>
-                    <span class="copyright">© 2021 SuFISHient Charters</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="sub-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="sub-footer-inner">
-                <ul>
-                  <li>
-                    <strong>Phone: </strong
-                    ><a href="tel:+16168869143">1-616-886-9143</a>
-                  </li>
-                  <li>
-                    <strong>Email: </strong
-                    ><a href="mailto:info@sufishientcharters.com"
-                      >info@sufishientcharters.com</a
+                    <span class="copyright"
+                      >© {{ now.Format "2006" }} {{ .Site.Title }}</span
                     >
                   </li>
                 </ul>
@@ -416,6 +383,7 @@
           </div>
         </div>
       </div>
+      {{ partial "sub-footer.html" . }}
     </div>
   </body>
 </html>
