@@ -3,11 +3,19 @@
 {{ define "header_classes" }}{{ end }}
 
 {{ define "main" }}
+<div class="intro intro-small">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>{{ .Title }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-9">
-      <h1>{{.Title}}</h1>
-      {{ dateFormat "Monday, Jan 2, 2006" .Date }}
+  <div class="row">
+    <div class="col-12 col-md-8">
+      {{if .Date }}{{ dateFormat "Monday, Jan 2, 2006" .Date }}{{ end }}
       {{if .Params.author}}Author: {{.Params.Author}}{{end}}
       <div class="content">
         {{.Content}}

@@ -15,7 +15,7 @@ ul.social {
     margin: 0;
     padding: 0;
     list-style: none;
-    margin-right: 30px;
+    margin-right: 0.5rem;
     &:last-of-type {
       margin: 0;
     }
@@ -23,7 +23,7 @@ ul.social {
       background-repeat: no-repeat;
       background-position: center center;
       background-size: auto;
-      padding: 8px;
+      padding: 0.25rem;
       display: block;
       span {
         font-size: 24px;

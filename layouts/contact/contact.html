@@ -14,19 +14,65 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-8">
-      {{ .Content }}
-      <ul>
-        <li><strong>Phone: </strong>{{ .Site.Data.contact.phone }}</li>
-        <li><strong>Email: </strong><a href="mailto:{{ .Site.Data.contact.email }}">
-            {{ .Site.Data.contact.email }}</a></li>
-        {{ if .Site.Data.contact.address }}
-        <li style="white-space: pre-wrap;"><strong>Address: </strong><br>{{ .Site.Data.contact.address }}</li>
-        {{ end }}
-      </ul>
+    <div class="col-12 col-md-8 mb-2">{{ .Content }}</div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-8 mb-2">
+      <form name="contact" class="contact-form width-normal" action="thank-you" method="POST" data-netlify="true">
+        <div class="form-group">
+          <label for="contactName">Name</label>
+          <input id="contactName" name="Name" type="text" placeholder="Davy Jones" class="form-control" required="" />
+        </div>
+        <div class="form-group">
+          <label for="contactEmail">Email</label>
+          <input id="contactEmail" name="Email" type="email" placeholder="davy.jones@example.com" class="form-control"
+            required="" aria-describedby="emailHelp" />
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="contactSubject">Subject</label>
+          <input id="contactSubject" name="Subject" type="text" placeholder="Shiver Me Timbers" class="form-control"
+            autocomplete="off" />
+        </div>
+        <div class="form-group">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="Message" placeholder="Arrr, me matey…" class="form-control"
+            rows="8"></textarea>
+        </div>
+        <button type="submit" class="button button-primary">Submit</button>
+      </form>
+      <small id="feedback"></small>
+    </div>
+    <div class="col-12 col-md-4 mb-2">
+      {{ with .Site.Data.contact }}
+      <address class="vcard">
+        <span class="fn">{{ .fullName }}</span>
+        <br />
+        <a class="url org" href="{{ site.BaseURL }}">{{ .businessName }}</a>
+        <br />
+        <span class="adr">
+          <a class="street-address" href="{{ .mapURL }}">{{ .streetAddress }}</a>
+          <br />
+          <span class="locality">{{ .locality }}</span>
+          <abbr class="region">{{ .region }}</abbr>
+          <span class="postal-code">{{ .postalCode }}</span>
+        </span>
+        <br />
+        T: <a class="tel" href="tel:{{ .phone }}">{{ .phone }}</a>
+        <br />
+        E: <a class="email" href="mailto:{{ .email }}">{{ .email }}</a>
+        <br />
+      </address>
+      <div class="social-links mb-2">
+        {{ partial "social.html" }}
+      </div>
+      <div class="map">
+        <iframe width="100%" frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key={{ site.Params.google_api_key }}&q={{ .mapQuery }}"></iframe>
+      </div>
       <h4 class="mt-4">Business Hours</h4>
       <table class="table table-sm opening-hours-table">
-        {{ range .Site.Data.contact.hours }}
+        {{ range .hours }}
         <tr>
           <td class="day font-weight-bold">{{ .day }}</td>
           <td class="opens">{{ .open }}</td>
@@ -35,7 +81,19 @@
         </tr>
         {{ end }}
       </table>
+      {{ end }}
     </div>
   </div>
 </div>
+{{ end }}
+
+{{ define "footer_js" }}
+{{ $library := resources.Get "js/libs/library.js" }}
+{{ $contact := resources.Get "js/pages/contact.js" }}
+{{ $contactJS := slice $library $contact |resources.Concat "js/contact.js" }}
+{{ if .Site.IsServer }}
+<script type="text/javascript" src="{{ $contactJS.RelPermalink }}"></script>
+{{ else }}
+<script type="text/javascript" src="{{ ($contactJS | minify | fingerprint).RelPermalink }}"></script>
+{{ end }}
 {{ end }}

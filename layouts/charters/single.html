@@ -4,7 +4,9 @@
 
 {{ define "main" }}
 {{ $button := (dict "text" .Params.Button "link" .Params.ButtonLink)}}
-{{ partial "hero-image-setheight.html" (dict "background" .Params.heroBackground "backgroundPosition" .Params.heroBackgroundPosition "heading" .Params.heroHeading "subheading" .Params.heroSubHeading "section" .Section "parent" .Parent "button" $button "content" .)}}
+{{ partial "hero-image-setheight.html" (dict "background" .Params.heroBackground "backgroundPosition"
+.Params.heroBackgroundPosition "heading" .Params.heroHeading "subheading" .Params.heroSubHeading "section" .Section
+"parent" .Parent "button" $button "content" .)}}
 <div class="container pt-4 pt-md-10 pb-4 pb-md-10">
   <div class="row justify-content-start">
     <div class="col-12 col-md-8">
@@ -17,15 +19,4 @@
     </div>
   </div>
 </div>
-{{ end }}
-
-{{ define "footer_js" }}
-{{ $library := resources.Get "js/libs/library.js" }}
-{{ $charters := resources.Get "js/pages/charters.js" }}
-{{ $chartersJS := slice $library $charters |resources.Concat "js/charters.js" }}
-{{ if .Site.IsServer }}
-  <script type="text/javascript" src="{{ $chartersJS.RelPermalink }}"></script>
-  {{ else }}
-  <script type="text/javascript" src="{{ ($chartersJS | minify | fingerprint).RelPermalink }}"></script>
-  {{ end }}
 {{ end }}
