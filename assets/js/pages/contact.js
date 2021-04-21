@@ -20,7 +20,7 @@ function handleSubmit(event) {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: encode({
       'form-name': form.getAttribute('name'),
-      ...new FormData(form)
+      ...Object.fromEntries(new FormData(form))
     })
   }).then(resp => {
     if (!(resp.status >= 200 && resp.status <= 299)) {
