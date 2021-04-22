@@ -1,0 +1,78 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-book{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "main" }}
+<div class="intro intro-small">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>{{ .Title }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8 mb-2">{{ .Content }}</div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-8 mb-4">
+      <form name="book" action="thank-you" method="POST" data-netlify="true">
+        <div class="form-group">
+          <label for="book-name">Name</label>
+          <input id="book-name" name="Name" type="text" placeholder="Davy Jones" class="form-control" required="" />
+        </div>
+        <div class="form-group">
+          <label for="book-email">Email</label>
+          <input id="book-email" name="Email" type="email" placeholder="davy.jones@example.com" class="form-control"
+            required="" aria-describedby="email-help" />
+          <small id="email-help" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="book-phone">Phone</label>
+          <input id="book-phone" name="Phone" type="tel" placeholder="123-867-5309" class="form-control" required=""
+            aria-describedby="phone-help" />
+          <small id="phone-help" class="form-text text-muted">We'll never share your phone with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="book-date">Desired Date</label>
+          <input id="book-date" name="Date" type="date" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="book-party">Number in Party</label>
+          <input id="book-party" name="Party" type="number" class="form-control" min="1" max="6" value="1" />
+        </div>
+        <div class="form-group">
+          <label for="book-charter">Select a Charter</label>
+          <select id="book-charter" name="Charter" class="form-control">
+            <option value="Lake Michigan Fishing: 4 Hours">Lake Michigan Fishing: 4 Hours</option>
+            <option value="Lake Michigan Fishing: 5 Hours">Lake Michigan Fishing: 5 Hours</option>
+            <option value="Lake Michigan Fishing: 6 Hours">Lake Michigan Fishing: 6 Hours</option>
+            <option value="Lake Michigan Fishing: 7 Hours">Lake Michigan Fishing: 7 Hours</option>
+            <option value="Lake Michigan Fishing: 8 Hours">Lake Michigan Fishing: 8 Hours</option>
+            <option value="Lake Michigan Fishing: 8 Hours">Lake Michigan Fishing: 8 Hours</option>
+            <option value="Boat Adventures: 2 Hours">Boat Adventures: 2 Hours</option>
+            <option value="Boat Adventures: 3 Hours">Boat Adventures: 3 Hours</option>
+            <option value="Boat Adventures: 4 Hours">Boat Adventures: 4 Hours</option>
+            <option value="Inland Fishing: 3 Hours">Inland Fishing: 3 Hours</option>
+          </select>
+        </div>
+        <button type="submit" class="button button-primary">Submit</button>
+      </form>
+      <small id="feedback"></small>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ define "footer_js" }}
+{{ $library := resources.Get "js/libs/library.js" }}
+{{ $book := resources.Get "js/pages/book.js" }}
+{{ $bookJS := slice $library $book |resources.Concat "js/book.js" }}
+{{ if .Site.IsServer }}
+<script type="text/javascript" src="{{ $bookJS.RelPermalink }}"></script>
+{{ else }}
+<script type="text/javascript" src="{{ ($bookJS | minify | fingerprint).RelPermalink }}"></script>
+{{ end }}
+{{ end }}

@@ -106,13 +106,16 @@ $button-width: 35px;
         color: $color-link;
         text-decoration: none;
         overflow: hidden;
+        &.cta {
+          background: $cta;
+        }
         &:hover::after,
         &:focus::after,
         &:active::after {
           width: 100%;
         }
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: 0;
           left: 50%;

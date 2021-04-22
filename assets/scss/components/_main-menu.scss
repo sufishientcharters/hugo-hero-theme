@@ -20,20 +20,33 @@
         color: $primary;
         &:hover {
           background: $primary;
-          color: #ffffff;
+          color: $white;
           text-decoration: none;
+        }
+        &.cta {
+          background: $cta;
+          color: $white;
+        }
+        &.cta:hover {
+          background: lighten($cta, 10%);
         }
       }
       &.active {
         > a {
           background: $primary;
           text-decoration: none;
-          color: #ffffff;
+          color: $white;
           &:hover {
             text-decoration: none;
             background: $primary;
             transition: all 225ms ease-in 0s;
-            color: #ffffff;
+            color: $white;
+          }
+          &.cta {
+            background: darken($cta, 10%);
+          }
+          &.cta:hover {
+            background: $cta;
           }
         }
       }
