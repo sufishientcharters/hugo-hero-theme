@@ -24,6 +24,7 @@
 <body class='page {{ block "body_classes" . }}{{ end }}'>
   {{ partial "main-menu-mobile.html" . }}
   <div id="wrapper" class="wrapper">
+    {{ partial "super-header.html" . }}
     {{ partial "header.html" . }}
     {{ block "main" . }}
     {{ end }}
@@ -46,4 +47,5 @@
   {{ partial "google-analytics.html" . }}
 
 </body>
+
 </html>
