@@ -1,8 +1,8 @@
 <div class="review review-summary">
-  <blockquote class="review-content">
+  <blockquote class="review-content" cite="{{ .Params.Permalink }}">
     {{ .Content }}
   </blockquote>
-  <div class="review-author">
+  <figcaption class="review-author">
     {{ .Params.Author }}
-  </div>
+  </figcaption>
 </div>
