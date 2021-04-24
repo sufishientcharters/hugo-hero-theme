@@ -37,3 +37,9 @@ function handleSubmit(event) {
 document
   .querySelector('form[name=book]')
   .addEventListener('submit', handleSubmit);
+
+const dateInput = document
+  .querySelector('form[name=book] input[type=date]');
+const t = today();
+dateInput.setAttribute('min', isoDate(t))
+dateInput.valueAsDate = t;
