@@ -25,7 +25,9 @@
 }
 .button-cta {
   background: $cta;
+  color: $black;
   &:hover {
     background-color: lighten($cta, 10%);
+    color: lighten($black, 10%);
   }
 }

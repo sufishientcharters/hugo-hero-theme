@@ -25,10 +25,11 @@
         }
         &.cta {
           background: $cta;
-          color: $white;
+          color: $black;
         }
         &.cta:hover {
           background: lighten($cta, 10%);
+          color: lighten($black, 10%);
         }
       }
       &.active {
@@ -43,10 +44,12 @@
             color: $white;
           }
           &.cta {
-            background: darken($cta, 10%);
+            background: $cta;
+            color: $black;
           }
           &.cta:hover {
-            background: $cta;
+            background: lighten($cta, 10%);
+            color: lighten($black, 10%);
           }
         }
       }
