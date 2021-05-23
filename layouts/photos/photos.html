@@ -1,0 +1,32 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-photos{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "main" }}
+{{ partial "hero-image-setheight.html" (dict "background" .Params.heroBackground "backgroundPosition"
+.Params.heroBackgroundPosition "heading" .Params.heroHeading "subheading" .Params.heroSubHeading "content" .)}}
+{{ if .Content }}
+<div class="container pt-6 pt-md-10">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-intro">
+                {{ .Content }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
+{{ end }}
+
+{{ define "footer_js" }}
+<!-- Load PhotoSwipe js if the load-photoswipe shortcode has been used -->
+{{ if ($.Scratch.Get "photoswipeloaded") }}
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="/js/load-photoswipe.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js"
+    integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js"
+    integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
+{{ end }}
+{{ end }}
