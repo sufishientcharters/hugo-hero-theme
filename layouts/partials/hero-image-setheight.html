@@ -1,18 +1,25 @@
-<div id="hero" class="hero-image hero-image-setheight bg-position-{{ .backgroundPosition | default "center"}}" style="background-image: url('{{ .background | relURL }}');">
+<div id="hero" class="hero-image hero-image-setheight bg-position-{{ .backgroundPosition | default " center"}}"
+  style="background-image: url('{{ .background | relURL }}');">
   <div class="container ">
     <div class="hero-text">
       {{ if .parent.Permalink }}
       <a class="text-white" href="{{ .parent.Permalink }}">
-      {{ end }}
+        {{ end }}
         <span class="hero-section">{{ .section }}</span>
-      {{ if .parent.Permalink }}
+        {{ if .parent.Permalink }}
       </a>
       {{ end }}
       <h1>{{ .heading }}</h1>
       <p>{{ .subheading }}</p>
       {{ if .button }}
       <div class="calltoaction">
-        <a class="button button-cta" href="{{ .button.link | relURL }}">{{ .button.text }}</a>
+        <a class="button button-cta{{ if .fareharborId }} not-fareharbor{{ end }}" href="{{ .button.link | relURL }}">{{
+          .button.text }}</a>
+        {{ if .fareharborId }}
+        <a class="button button-cta fareharbor"
+          href="https://fareharbor.com/embeds/book/sufishientcharters/items/{{ .fareharborId }}/?full-items=yes&flow=588186"
+          style="display: none;">{{ .button.text }}</a>
+        {{ end }}
       </div>
       {{ end }}
     </div>

@@ -45,7 +45,7 @@
       const params = new URLSearchParams(document.location.search.substring(1));
       if (params.get('fareharbor')) {
         document.querySelectorAll('.not-fareharbor').forEach(e => e.style.display = 'none');
-        document.querySelectorAll('.fareharbor').forEach(e => e.style.display = 'block');
+        document.querySelectorAll('.fareharbor').forEach(e => e.style.display = 'inline-block');
       }
     })();
   </script>
