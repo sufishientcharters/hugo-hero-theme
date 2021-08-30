@@ -38,6 +38,18 @@
   {{ block "footer_js" . }}
   {{ end }}
 
+  <!-- FareHarbor Lightframe API - do not remove - see: https://fareharbor.com/help/website/resources/lightframe-api/ -->
+  <script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"></script>
+  <script>
+    (function () {
+      const params = new URLSearchParams(document.location.search.substring(1));
+      if (params.get('fareharbor')) {
+        document.querySelectorAll('.not-fareharbor').forEach(e => e.style.display = 'none');
+        document.querySelectorAll('.fareharbor').forEach(e => e.style.display = 'block');
+      }
+    })();
+  </script>
+
   {{ if .Site.IsServer }}
   <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
   {{ else }}

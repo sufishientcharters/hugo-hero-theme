@@ -12,8 +12,13 @@
     <div class="col-12 col-md-8">
       <div class="service service-single">
         <div class="content">{{.Content}}</div>
-        <div class="calltoaction">
+        <div class="calltoaction not-fareharbor">
           <a class="button button-cta" href="{{ .Params.buttonLink | relURL }}">{{ .Params.button }}</a>
+        </div>
+        <div class="calltoaction fareharbor" style="display:none;">
+          <a class="button button-cta"
+            href="https://fareharbor.com/embeds/book/sufishientcharters/items/{{ .Params.fareharborId }}/?full-items=yes&flow=588186">{{
+            .Params.button }}</a>
         </div>
       </div>
     </div>

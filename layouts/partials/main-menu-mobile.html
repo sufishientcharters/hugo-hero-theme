@@ -2,11 +2,19 @@
   <ul>
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
-    <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}">
-      <a href="{{.URL}}" class="{{ with .Params.class }}{{ . }}{{ end }}">
+    <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent " main" . }} active{{ end }}">
+      <a href="{{.URL}}"
+        class="{{ with .Params.class }}{{ . }}{{ end }}{{ if .Params.fareharbor }} not-fareharbor{{ end }}">
         {{ .Pre }}
         <span>{{ .Name }}</span>
       </a>
+      {{ if .Params.fareharbor }}
+      <a href="https://fareharbor.com/embeds/book/sufishientcharters/?full-items=yes&flow=588186"
+        class="{{ with .Params.class }}{{ . }}{{ end }} fareharbor" style="display: none;">
+        {{ .Pre }}
+        <span>{{ .Name }}</span>
+      </a>
+      {{ end }}
     </li>
     {{end}}
   </ul>

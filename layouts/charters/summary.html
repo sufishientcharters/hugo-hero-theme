@@ -2,7 +2,7 @@
   {{ if .Params.icon }}
   <div class="service-image">
     <a href="{{ .Permalink }}" title="{{ .Title }}">
-      <img src="{{ .Site.BaseURL }}{{ .Params.icon }}" alt="{{ .Title }} Icon"/>
+      <img src="{{ .Site.BaseURL }}{{ .Params.icon }}" alt="{{ .Title }} Icon" />
     </a>
   </div>
   {{ end }}
@@ -13,8 +13,13 @@
     <div class="service-body mb-2">
       {{ .Summary }}
     </div>
-    <div class="service-calltoaction mb-2">
+    <div class="service-calltoaction not-fareharbor mb-2">
       <a class="button button-cta" href="{{ .Params.buttonLink | relURL }}">{{ .Params.button }}</a>
+    </div>
+    <div class="service-calltoaction fareharbor mb-2" style="display: none;">
+      <a class="button button-cta"
+        href="https://fareharbor.com/embeds/book/sufishientcharters/items/{{ .Params.fareharborId }}/?full-items=yes&flow=588186">{{
+        .Params.button }}</a>
     </div>
   </div>
 </div>
