@@ -70,7 +70,7 @@
 {{ $library := resources.Get "js/libs/library.js" }}
 {{ $book := resources.Get "js/pages/book.js" }}
 {{ $bookJS := slice $library $book |resources.Concat "js/book.js" }}
-{{ if .Site.IsServer }}
+{{ if hugo.IsServer }}
 <script type="text/javascript" src="{{ $bookJS.RelPermalink }}"></script>
 {{ else }}
 <script type="text/javascript" src="{{ ($bookJS | minify | fingerprint).RelPermalink }}"></script>
