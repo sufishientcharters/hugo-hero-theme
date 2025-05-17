@@ -91,7 +91,7 @@
 {{ $library := resources.Get "js/libs/library.js" }}
 {{ $contact := resources.Get "js/pages/contact.js" }}
 {{ $contactJS := slice $library $contact |resources.Concat "js/contact.js" }}
-{{ if .Site.IsServer }}
+{{ if hugo.IsServer }}
 <script type="text/javascript" src="{{ $contactJS.RelPermalink }}"></script>
 {{ else }}
 <script type="text/javascript" src="{{ ($contactJS | minify | fingerprint).RelPermalink }}"></script>
